@@ -2,6 +2,8 @@
 
 Static Astro site for **Math Sikney**, the offline mental-math visualizer for Android.
 
+**Live site:** https://mathsikney.vercel.app/
+
 The page is written for people who want the app, not for people reading a changelog. Version numbers, package IDs, hashes and build details are kept in this README and in the APK verification notes below, not in the rendered page.
 
 ## Local development
