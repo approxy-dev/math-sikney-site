@@ -59,6 +59,16 @@ SEO pieces included:
 - `FAQPage` JSON-LD that matches the visible FAQ
 - One `h1`, descriptive title and meta description, descriptive alt text on every screenshot
 
+## Google Search Console
+
+Live site: `https://mathsikney.vercel.app/`
+
+- Verification file: `public/google9f3fb088d8fefe90.html` → served at `/google9f3fb088d8fefe90.html`
+- Sitemap: `https://mathsikney.vercel.app/sitemap.xml`
+- Robots: `https://mathsikney.vercel.app/robots.txt`
+
+After a deploy, verify the URL-prefix property in Search Console with the HTML file, submit the sitemap under **Indexing → Sitemaps**, then use **URL Inspection → Request indexing** for the homepage.
+
 ## Direct APK
 
 The download lives at:
