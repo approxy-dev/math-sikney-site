@@ -56,8 +56,8 @@ The captures were reviewed at all three widths. The hero, mode list, two-column 
 
 ## SEO checks
 
-- Title: “Math Sikney — offline mental math trainer for Android” (56 characters)
-- Meta description: 143 characters, includes the brand, platform and value proposition
+- Title: “Math Sikney — offline mental math trainer for Android” (53 characters)
+- Meta description: 154 characters, includes the brand, platform and value proposition
 - Canonical: `https://math-sikney-site.vercel.app/` (default origin; override with `SITE_URL`)
 - `/sitemap.xml` → **200**, one URL with `lastmod`, `changefreq` and `priority`
 - `/robots.txt` → **200**, allows all crawlers and points at the sitemap
