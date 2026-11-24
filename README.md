@@ -19,7 +19,11 @@ npm run preview
 
 ## Deploy to Vercel
 
-Import this folder into Vercel. The project is a standard static Astro build:
+Repository: [github.com/approxy-dev/math-sikney-site](https://github.com/approxy-dev/math-sikney-site)
+
+[![Deploy with Vercel](https://vercel.com/button)](https://vercel.com/new/clone?repository-url=https://github.com/approxy-dev/math-sikney-site)
+
+Import the repository into Vercel. The project is a standard static Astro build:
 
 - Framework preset: **Astro**
 - Build command: `npm run build`
