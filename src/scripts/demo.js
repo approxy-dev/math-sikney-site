@@ -174,7 +174,7 @@ export function initDemo() {
     if (els.expr) els.expr.classList.remove("is-peeking");
     if (els.hint)
       els.hint.textContent =
-        "Press start. The expression stays for 3.15 seconds, then the screen clears.";
+        "Press start. The expression stays for a few seconds, then the screen clears.";
     if (els.count) els.count.textContent = "00 / 05";
     if (els.answer) els.answer.hidden = true;
     if (els.keypad) els.keypad.hidden = true;
@@ -338,7 +338,7 @@ export function initDemo() {
     if (els.sLine) {
       if (state.correct === BEADS)
         els.sLine.textContent =
-          "Every expression came back intact. The demo uses Level 3 timing; the app starts at Level 1.";
+          "Every expression came back intact. The app starts at Level 1 and gets harder from there.";
       else if (state.correct === 0)
         els.sLine.textContent =
           "Nothing held this time. The frame stays honest — that is the whole point of it.";
@@ -373,7 +373,7 @@ export function initDemo() {
       els.expr.innerHTML = `${q.a} <span class="op">+</span> ${q.b}`;
     }
     if (els.hint) els.hint.textContent = "Peek used. In the app this question scores 0 XP.";
-    announce("Expression revealed for two seconds.");
+    announce("Expression revealed for a moment.");
     later(() => {
       if (!els.expr) return;
       els.expr.classList.remove("is-peeking");

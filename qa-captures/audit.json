@@ -1,0 +1,464 @@
+[
+  {
+    "width": 360,
+    "viewport": 360,
+    "scrollWidth": 360,
+    "scrollHeight": 12666,
+    "horizontalOverflow": false,
+    "overflow": [
+      {
+        "tag": "div",
+        "cls": "mask-plane",
+        "text": "Hold it…",
+        "left": -249,
+        "right": 35,
+        "width": 284
+      }
+    ],
+    "smallTargets": [],
+    "h1Count": 1,
+    "headings": [
+      {
+        "level": "H1",
+        "text": "Math Sikney"
+      },
+      {
+        "level": "H2",
+        "text": "Four beats. Then the expression is gone."
+      },
+      {
+        "level": "H3",
+        "text": "It appears"
+      },
+      {
+        "level": "H3",
+        "text": "It disappears"
+      },
+      {
+        "level": "H3",
+        "text": "You rebuild it"
+      },
+      {
+        "level": "H3",
+        "text": "It tells you why"
+      },
+      {
+        "level": "H2",
+        "text": "Five expressions. Then it's your turn."
+      },
+      {
+        "level": "H2",
+        "text": "Download Math Sikney."
+      },
+      {
+        "level": "H2",
+        "text": "Seven ways to train."
+      },
+      {
+        "level": "H3",
+        "text": "Practice"
+      },
+      {
+        "level": "H3",
+        "text": "Level Test"
+      },
+      {
+        "level": "H3",
+        "text": "Ranked Match"
+      },
+      {
+        "level": "H3",
+        "text": "Daily Challenge"
+      },
+      {
+        "level": "H3",
+        "text": "Fails Review"
+      },
+      {
+        "level": "H3",
+        "text": "Stack Challenge"
+      },
+      {
+        "level": "H3",
+        "text": "Learn & Explore"
+      },
+      {
+        "level": "H2",
+        "text": "Eight tiers. Ten stars. One open end."
+      },
+      {
+        "level": "H3",
+        "text": "Forty badges to collect"
+      },
+      {
+        "level": "H2",
+        "text": "Real screens."
+      },
+      {
+        "level": "H2",
+        "text": "It never goes online."
+      },
+      {
+        "level": "H2",
+        "text": "Good to know."
+      }
+    ],
+    "sectionShots": [
+      {
+        "name": "intro",
+        "height": 1511,
+        "file": "E:\\Math Sikney Site\\qa-captures\\360-intro.png"
+      },
+      {
+        "name": "loop",
+        "height": 1982,
+        "file": "E:\\Math Sikney Site\\qa-captures\\360-loop.png"
+      },
+      {
+        "name": "demo",
+        "height": 1058,
+        "file": "E:\\Math Sikney Site\\qa-captures\\360-demo.png"
+      },
+      {
+        "name": "download",
+        "height": 989,
+        "file": "E:\\Math Sikney Site\\qa-captures\\360-download.png"
+      },
+      {
+        "name": "modes",
+        "height": 1383,
+        "file": "E:\\Math Sikney Site\\qa-captures\\360-modes.png"
+      },
+      {
+        "name": "ranks",
+        "height": 2114,
+        "file": "E:\\Math Sikney Site\\qa-captures\\360-ranks.png"
+      },
+      {
+        "name": "proof",
+        "height": 1226,
+        "file": "E:\\Math Sikney Site\\qa-captures\\360-proof.png"
+      },
+      {
+        "name": "privacy",
+        "height": 1079,
+        "file": "E:\\Math Sikney Site\\qa-captures\\360-privacy.png"
+      },
+      {
+        "name": "faq",
+        "height": 682,
+        "file": "E:\\Math Sikney Site\\qa-captures\\360-faq.png"
+      },
+      {
+        "name": "footer",
+        "height": 595,
+        "file": "E:\\Math Sikney Site\\qa-captures\\360-footer.png"
+      }
+    ]
+  },
+  {
+    "width": 768,
+    "viewport": 768,
+    "scrollWidth": 768,
+    "scrollHeight": 10330,
+    "horizontalOverflow": false,
+    "overflow": [
+      {
+        "tag": "div",
+        "cls": "mask-plane",
+        "text": "Hold it…",
+        "left": -629,
+        "right": 42,
+        "width": 671
+      }
+    ],
+    "smallTargets": [],
+    "h1Count": 1,
+    "headings": [
+      {
+        "level": "H1",
+        "text": "Math Sikney"
+      },
+      {
+        "level": "H2",
+        "text": "Four beats. Then the expression is gone."
+      },
+      {
+        "level": "H3",
+        "text": "It appears"
+      },
+      {
+        "level": "H3",
+        "text": "It disappears"
+      },
+      {
+        "level": "H3",
+        "text": "You rebuild it"
+      },
+      {
+        "level": "H3",
+        "text": "It tells you why"
+      },
+      {
+        "level": "H2",
+        "text": "Five expressions. Then it's your turn."
+      },
+      {
+        "level": "H2",
+        "text": "Download Math Sikney."
+      },
+      {
+        "level": "H2",
+        "text": "Seven ways to train."
+      },
+      {
+        "level": "H3",
+        "text": "Practice"
+      },
+      {
+        "level": "H3",
+        "text": "Level Test"
+      },
+      {
+        "level": "H3",
+        "text": "Ranked Match"
+      },
+      {
+        "level": "H3",
+        "text": "Daily Challenge"
+      },
+      {
+        "level": "H3",
+        "text": "Fails Review"
+      },
+      {
+        "level": "H3",
+        "text": "Stack Challenge"
+      },
+      {
+        "level": "H3",
+        "text": "Learn & Explore"
+      },
+      {
+        "level": "H2",
+        "text": "Eight tiers. Ten stars. One open end."
+      },
+      {
+        "level": "H3",
+        "text": "Forty badges to collect"
+      },
+      {
+        "level": "H2",
+        "text": "Real screens."
+      },
+      {
+        "level": "H2",
+        "text": "It never goes online."
+      },
+      {
+        "level": "H2",
+        "text": "Good to know."
+      }
+    ],
+    "sectionShots": [
+      {
+        "name": "intro",
+        "height": 1488,
+        "file": "E:\\Math Sikney Site\\qa-captures\\768-intro.png"
+      },
+      {
+        "name": "loop",
+        "height": 1649,
+        "file": "E:\\Math Sikney Site\\qa-captures\\768-loop.png"
+      },
+      {
+        "name": "demo",
+        "height": 846,
+        "file": "E:\\Math Sikney Site\\qa-captures\\768-demo.png"
+      },
+      {
+        "name": "download",
+        "height": 863,
+        "file": "E:\\Math Sikney Site\\qa-captures\\768-download.png"
+      },
+      {
+        "name": "modes",
+        "height": 1085,
+        "file": "E:\\Math Sikney Site\\qa-captures\\768-modes.png"
+      },
+      {
+        "name": "ranks",
+        "height": 1162,
+        "file": "E:\\Math Sikney Site\\qa-captures\\768-ranks.png"
+      },
+      {
+        "name": "proof",
+        "height": 1112,
+        "file": "E:\\Math Sikney Site\\qa-captures\\768-proof.png"
+      },
+      {
+        "name": "privacy",
+        "height": 874,
+        "file": "E:\\Math Sikney Site\\qa-captures\\768-privacy.png"
+      },
+      {
+        "name": "faq",
+        "height": 686,
+        "file": "E:\\Math Sikney Site\\qa-captures\\768-faq.png"
+      },
+      {
+        "name": "footer",
+        "height": 520,
+        "file": "E:\\Math Sikney Site\\qa-captures\\768-footer.png"
+      }
+    ]
+  },
+  {
+    "width": 1440,
+    "viewport": 1440,
+    "scrollWidth": 1440,
+    "scrollHeight": 8349,
+    "horizontalOverflow": false,
+    "overflow": [],
+    "smallTargets": [],
+    "h1Count": 1,
+    "headings": [
+      {
+        "level": "H1",
+        "text": "Math Sikney"
+      },
+      {
+        "level": "H2",
+        "text": "Four beats. Then the expression is gone."
+      },
+      {
+        "level": "H3",
+        "text": "It appears"
+      },
+      {
+        "level": "H3",
+        "text": "It disappears"
+      },
+      {
+        "level": "H3",
+        "text": "You rebuild it"
+      },
+      {
+        "level": "H3",
+        "text": "It tells you why"
+      },
+      {
+        "level": "H2",
+        "text": "Five expressions. Then it's your turn."
+      },
+      {
+        "level": "H2",
+        "text": "Download Math Sikney."
+      },
+      {
+        "level": "H2",
+        "text": "Seven ways to train."
+      },
+      {
+        "level": "H3",
+        "text": "Practice"
+      },
+      {
+        "level": "H3",
+        "text": "Level Test"
+      },
+      {
+        "level": "H3",
+        "text": "Ranked Match"
+      },
+      {
+        "level": "H3",
+        "text": "Daily Challenge"
+      },
+      {
+        "level": "H3",
+        "text": "Fails Review"
+      },
+      {
+        "level": "H3",
+        "text": "Stack Challenge"
+      },
+      {
+        "level": "H3",
+        "text": "Learn & Explore"
+      },
+      {
+        "level": "H2",
+        "text": "Eight tiers. Ten stars. One open end."
+      },
+      {
+        "level": "H3",
+        "text": "Forty badges to collect"
+      },
+      {
+        "level": "H2",
+        "text": "Real screens."
+      },
+      {
+        "level": "H2",
+        "text": "It never goes online."
+      },
+      {
+        "level": "H2",
+        "text": "Good to know."
+      }
+    ],
+    "sectionShots": [
+      {
+        "name": "intro",
+        "height": 1025,
+        "file": "E:\\Math Sikney Site\\qa-captures\\1440-intro.png"
+      },
+      {
+        "name": "loop",
+        "height": 1118,
+        "file": "E:\\Math Sikney Site\\qa-captures\\1440-loop.png"
+      },
+      {
+        "name": "demo",
+        "height": 685,
+        "file": "E:\\Math Sikney Site\\qa-captures\\1440-demo.png"
+      },
+      {
+        "name": "download",
+        "height": 683,
+        "file": "E:\\Math Sikney Site\\qa-captures\\1440-download.png"
+      },
+      {
+        "name": "modes",
+        "height": 1030,
+        "file": "E:\\Math Sikney Site\\qa-captures\\1440-modes.png"
+      },
+      {
+        "name": "ranks",
+        "height": 954,
+        "file": "E:\\Math Sikney Site\\qa-captures\\1440-ranks.png"
+      },
+      {
+        "name": "proof",
+        "height": 1193,
+        "file": "E:\\Math Sikney Site\\qa-captures\\1440-proof.png"
+      },
+      {
+        "name": "privacy",
+        "height": 754,
+        "file": "E:\\Math Sikney Site\\qa-captures\\1440-privacy.png"
+      },
+      {
+        "name": "faq",
+        "height": 640,
+        "file": "E:\\Math Sikney Site\\qa-captures\\1440-faq.png"
+      },
+      {
+        "name": "footer",
+        "height": 288,
+        "file": "E:\\Math Sikney Site\\qa-captures\\1440-footer.png"
+      }
+    ]
+  }
+]

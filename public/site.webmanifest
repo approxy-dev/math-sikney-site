@@ -1,0 +1,23 @@
+{
+  "name": "Math Sikney",
+  "short_name": "Math Sikney",
+  "description": "A free offline Android app for mental arithmetic. Hold an expression in your head, then solve it.",
+  "start_url": "/",
+  "scope": "/",
+  "display": "browser",
+  "background_color": "#151916",
+  "theme_color": "#151916",
+  "icons": [
+    {
+      "src": "/favicon.svg",
+      "sizes": "any",
+      "type": "image/svg+xml",
+      "purpose": "any"
+    },
+    {
+      "src": "/apple-touch-icon.png",
+      "sizes": "180x180",
+      "type": "image/png"
+    }
+  ]
+}
