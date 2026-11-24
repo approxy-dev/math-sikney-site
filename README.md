@@ -36,10 +36,10 @@ Import the repository into Vercel. The project is a standard static Astro build:
 
 ## Canonical URL and SEO
 
-`astro.config.mjs` sets the canonical origin used by the canonical tag, Open Graph URLs, structured data and the sitemap. It defaults to the likely Vercel project URL:
+`astro.config.mjs` sets the canonical origin used by the canonical tag, Open Graph URLs, structured data and the sitemap. It defaults to the live Vercel URL:
 
 ```
-https://math-sikney-site.vercel.app
+https://mathsikney.vercel.app
 ```
 
 If the site is deployed to a different domain, set `SITE_URL` before building:
