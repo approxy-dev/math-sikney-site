@@ -1,0 +1,98 @@
+---
+import "../styles/tokens.css";
+import "../styles/site.css";
+
+interface Props {
+  title: string;
+  description: string;
+}
+
+const { title, description } = Astro.props;
+const enableAnalytics = import.meta.env.PROD && process.env.VERCEL === "1";
+
+const jsonLd = {
+  "@context": "https://schema.org",
+  "@type": "SoftwareApplication",
+  name: "Math Sikney",
+  alternateName: "Mental Math Visualizer",
+  applicationCategory: "EducationalApplication",
+  applicationSubCategory: "Mental arithmetic trainer",
+  operatingSystem: "Android 8.0+",
+  softwareVersion: "1.2.0",
+  inLanguage: ["en", "ne"],
+  sameAs: ["https://github.com/approxy-dev"],
+  description:
+    "An offline Android trainer for mental arithmetic. Expressions appear, disappear, and you answer from memory. Version 1.2.0 adds Stack Challenge and Learn & Explore, with no account and no internet permission.",
+  featureList: [
+    "Stack Challenge, Learn & Explore, Practice, Level Test, Ranked Match, Daily Challenge and Fails Review",
+    "One-to-five-question Practice and five- or ten-round Stack Challenge",
+    "Stacks of one to five expressions held in memory",
+    "Eight rank tiers from Bronze to Grandmaster",
+    "Forty achievements across five operations",
+    "English and Nepali, with Latin or Devanagari numerals",
+    "Local schema-3 JSON backup and CSV export",
+  ],
+};
+---
+
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>{title}</title>
+    <meta name="description" content={description} />
+    <meta name="author" content="Approxy" />
+    <meta name="theme-color" content="#151916" />
+    <meta name="color-scheme" content="dark light" />
+
+    <meta property="og:type" content="website" />
+    <meta property="og:site_name" content="Math Sikney" />
+    <meta property="og:title" content={title} />
+    <meta property="og:description" content={description} />
+    <meta property="og:image" content="/og.png" />
+    <meta property="og:image:type" content="image/png" />
+    <meta property="og:image:width" content="1200" />
+    <meta property="og:image:height" content="630" />
+    <meta property="og:image:alt" content="Math Sikney 1.2.0 — Visualize. Hold. Solve. A real app screen beside the words." />
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content={title} />
+    <meta name="twitter:description" content={description} />
+    <meta name="twitter:image" content="/og.png" />
+
+    <link rel="icon" href="/favicon.svg" type="image/svg+xml" />
+    <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png" />
+
+    <link
+      rel="preload"
+      href="/fonts/space-grotesk-latin.woff2"
+      as="font"
+      type="font/woff2"
+      crossorigin
+    />
+    <link
+      rel="preload"
+      href="/fonts/plus-jakarta-sans-latin.woff2"
+      as="font"
+      type="font/woff2"
+      crossorigin
+    />
+    <link
+      rel="preload"
+      href="/fonts/jetbrains-mono-latin.woff2"
+      as="font"
+      type="font/woff2"
+      crossorigin
+    />
+
+    <script type="application/ld+json" set:html={JSON.stringify(jsonLd)} />
+
+    {enableAnalytics && (
+      <script is:inline defer src="/_vercel/insights/script.js"></script>
+    )}
+  </head>
+  <body>
+    <a class="skip-link" href="#main">Skip to content</a>
+    <slot />
+  </body>
+</html>

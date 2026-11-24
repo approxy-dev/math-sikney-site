@@ -1,0 +1,22 @@
+---
+interface Props {
+  class?: string;
+  label?: string;
+}
+
+const { class: className = "", label = "Math Sikney" } = Astro.props;
+---
+
+<svg class={className} viewBox="0 0 108 108" role="img" aria-label={label}>
+  <rect width="108" height="108" rx="24" fill="#233027"></rect>
+  <path
+    d="M28 40H80M28 54H80M28 68H80"
+    stroke="#96A58F"
+    stroke-width="2"
+    stroke-linecap="round"></path>
+  <path
+    d="M34 36v8M44 36v8M72 36v8M34 50v8M62 50v8M72 50v8M52 64v8M62 64v8M72 64v8"
+    stroke="#D4ED82"
+    stroke-width="7.5"
+    stroke-linecap="round"></path>
+</svg>

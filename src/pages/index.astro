@@ -1,0 +1,1004 @@
+---
+import { Picture } from "astro:assets";
+import Base from "../layouts/Base.astro";
+import Mark from "../components/Mark.astro";
+import RankEmblem from "../components/RankEmblem.astro";
+
+import home from "../assets/screens/home-phone.png";
+import ranks from "../assets/screens/ranks-phone.png";
+import landscape from "../assets/screens/round-landscape.png";
+import stack from "../assets/screens/stack-setup-phone.png";
+import stackRound from "../assets/screens/stack-five-phone.png";
+import goldenReceipt from "../assets/screens/stack-golden-receipt.png";
+import stats from "../assets/screens/stats-phone.png";
+import onboarding from "../assets/screens/onboarding-phone.png";
+import play from "../assets/screens/play-phone.png";
+import profile from "../assets/screens/profile-phone.png";
+import feedback from "../assets/screens/learning-feedback-phone.png";
+
+const title = "Math Sikney — mental math you can hold in your head";
+const description =
+  "An offline Android mental-math trainer. Hold an expression in memory, then solve it. Version 1.2.0 ships five operations, eight ranks and a direct APK download.";
+const apkSha = "0d3f5e0085c287d38fd6cc814ced9e45a595063c112d87f483b2fa035190d4ef";
+
+const ladder = [
+  { tier: "Bronze", rp: "0", color: "var(--tier-bronze)", top: false },
+  { tier: "Silver", rp: "300", color: "var(--tier-silver)", top: false },
+  { tier: "Gold", rp: "660", color: "var(--tier-gold)", top: false },
+  { tier: "Platinum", rp: "1110", color: "var(--tier-platinum)", top: false },
+  { tier: "Diamond", rp: "1650", color: "var(--tier-diamond)", top: false },
+  { tier: "Heroic", rp: "2310", color: "var(--tier-heroic)", top: true },
+  { tier: "Master", rp: "3090", color: "var(--tier-master)", top: true },
+  { tier: "Grandmaster", rp: "4090", color: "var(--tier-grandmaster)", top: true },
+];
+
+const badges = [
+  {
+    name: "First Steps",
+    cat: "GEN",
+    req: "Create your profile and finish your first round.",
+  },
+  {
+    name: "Carry Crusher",
+    cat: "ADD",
+    req: "Correct additions with 3+ carries.",
+  },
+  {
+    name: "Lightning Adder",
+    cat: "ADD",
+    req: "Correct additions at L3+ in under 3s.",
+  },
+  {
+    name: "Triple Threat",
+    cat: "ADD",
+    req: "All-correct ADD rounds with stack 3+.",
+  },
+  {
+    name: "Million Mind",
+    cat: "ADD",
+    req: "Correct additions with a 7+ digit sum.",
+  },
+  {
+    name: "Borrow Breaker",
+    cat: "SUB",
+    req: "Correct subtractions with 3+ borrows.",
+  },
+  {
+    name: "Table Titan",
+    cat: "MUL",
+    req: "Distinct L1 facts (2..9 x 2..9) solved.",
+  },
+  {
+    name: "Rapid Fire",
+    cat: "MUL",
+    req: "Correct L2 multiplications in under 4 s.",
+  },
+  {
+    name: "Zero Remainder",
+    cat: "DIV",
+    req: "Pass DIV Level Tests 10/10 at L3+.",
+  },
+  {
+    name: "Four-Way Focus",
+    cat: "MIX",
+    req: "All-correct N=4 rounds in MIXED.",
+  },
+  {
+    name: "On Fire",
+    cat: "GEN",
+    req: "Best daily streak length.",
+  },
+  {
+    name: "Clean Mind",
+    cat: "GEN",
+    req: "25 consecutive correct answers in any mode.",
+  },
+];
+
+const modes = [
+  {
+    name: "Practice",
+    desc: "Custom level, one to five questions, view time from 2 to 20 seconds, optional warm-up and peek. XP at half rate.",
+    meta: "Endless",
+    chip: "Shipped 1.2.0",
+    state: "live",
+  },
+  {
+    name: "Level Test",
+    desc: "Ten questions, one at a time. Eight correct with at most two timeouts unlocks the next skill level.",
+    meta: "10 questions",
+    chip: "Shipped 1.1.0",
+    state: "live",
+  },
+  {
+    name: "Ranked Match",
+    desc: "Tier-scaled timers, stacks, masks and hearts. RP moves on accuracy, speed and matched digits.",
+    meta: "6 rounds at Bronze",
+    chip: "Shipped 1.1.0",
+    state: "live",
+  },
+  {
+    name: "Daily Challenge",
+    desc: "A seeded five-round set, identical for everyone that day. 1.25× XP and a completion bonus.",
+    meta: "5 rounds · stack 2",
+    chip: "Shipped 1.1.0",
+    state: "live",
+  },
+  {
+    name: "Fails Review",
+    desc: "Up to twenty missed expressions, lowest digit-match first. A miss clears after two consecutive correct answers.",
+    meta: "20 stored",
+    chip: "Shipped 1.1.0",
+    state: "live",
+  },
+  {
+    name: "Stack Challenge",
+    desc: "Five or ten rounds, one to five questions, and Off, Soft, Standard or Pro mistake costs. Round receipts explain the multiplier and loss cap.",
+    meta: "5 or 10 rounds",
+    chip: "Shipped 1.2.0",
+    state: "live",
+  },
+  {
+    name: "Learn & Explore",
+    desc: "Counting, bonds to five and ten, addition within ten and twenty. Five foundation skills with hints and untimed input.",
+    meta: "5 skills",
+    chip: "Shipped 1.2.0",
+    state: "live",
+  },
+];
+
+const shots = [
+  {
+    img: home,
+    wide: false,
+    title: "Home",
+    note: "The counting frame is the daily goal: 12 of 20 questions, four rods of five beads.",
+    px: "360 × 800 dp",
+    alt: "Home screen with a citron daily-practice card, twelve of twenty questions filled in a counting frame, and a Bronze I rank card.",
+  },
+  {
+    img: ranks,
+    wide: false,
+    title: "Competitive ranks",
+    note: "Per-operation rank, next threshold, peak, win streak, and the full ladder with RP costs.",
+    px: "360 × 800 dp",
+    alt: "Ranks screen showing Division Bronze I, 0 RP, and the ladder from Bronze to Silver.",
+  },
+  {
+    img: landscape,
+    wide: true,
+    title: "A round in landscape",
+    note: "The keypad sits beside the question. Slot A holds 6 + 3; the answer slot is selected.",
+    px: "800 × 400 dp",
+    alt: "Landscape round screen with slot A showing 6 + 3, an answer slot reading 99, and a numeric keypad with a citron submit bar.",
+  },
+  {
+    img: stack,
+    wide: false,
+    title: "Stack setup",
+    note: "Questions per round, rounds in the challenge, an optional answer timer, and the multiplier.",
+    px: "360 × 800 dp",
+    alt: "Stack Challenge setup screen with question and round steppers and a stack multiplier.",
+  },
+  {
+    img: stackRound,
+    wide: false,
+    title: "Stack Challenge",
+    note: "Build the round, pass a question for free, and watch the multiplier climb as the stack holds.",
+    px: "360 × 800 dp",
+    alt: "Stack Challenge round with five expressions and a live multiplier.",
+  },
+  {
+    img: goldenReceipt,
+    wide: false,
+    title: "Score receipt",
+    note: "Every round ends with a transparent receipt: stack multiplier, perfect bonus and loss cap. Scores never reduce XP or ranked progress.",
+    px: "360 × 800 dp",
+    alt: "Stack Challenge score receipt showing a golden-tower round and its score breakdown.",
+  },
+  {
+    img: stats,
+    wide: false,
+    title: "Performance",
+    note: "Accuracy, mean answer time, a seven-day trend with empty days marked, and per-operation totals.",
+    px: "360 × 800 dp",
+    alt: "Statistics screen with accuracy and average answer time.",
+  },
+  {
+    img: onboarding,
+    wide: false,
+    title: "First run",
+    note: "Name, one of six symbols, a daily goal, and a restore path for an exported backup.",
+    px: "360 × 800 dp",
+    alt: "Onboarding form with a name field, six profile symbols, daily goal buttons and a start button.",
+  },
+  {
+    img: play,
+    wide: false,
+    title: "Mode select",
+    note: "Seven ways in: Learn & Explore, Stack Challenge, Practice, Level Test, Ranked Match, Daily Challenge and Fails Review.",
+    px: "360 × 800 dp",
+    alt: "Play screen listing the seven Math Sikney modes, including Stack Challenge and Learn & Explore.",
+  },
+  {
+    img: profile,
+    wide: false,
+    title: "Profile",
+    note: "Account level, badges unlocked, profile editing, settings, and local backup.",
+    px: "360 × 800 dp",
+    alt: "Profile screen with account level, achievements count and backup options.",
+  },
+  {
+    img: feedback,
+    wide: false,
+    title: "Learning feedback",
+    note: "The foundation skills show the dots before they ask for a number.",
+    px: "360 × 800 dp",
+    alt: "A learning session showing dots for counting and a numeric answer.",
+  },
+];
+---
+
+<Base title={title} description={description}>
+  <header class="topbar">
+    <a class="brand" href="#intro">
+      <Mark />
+      <span>Math Sikney</span>
+    </a>
+    <a class="btn btn-primary" href="/downloads/math-sikney-1.2.0.apk" download>Download APK</a>
+  </header>
+
+  <div class="shell">
+    <aside class="rail" aria-label="Sections">
+      <a class="rail-mark" href="#intro" aria-label="Math Sikney, back to top">
+        <Mark />
+      </a>
+
+      <nav>
+        <a href="#intro" data-rail="intro"><span class="n">01</span><span class="t">Intro</span></a>
+        <a href="#loop" data-rail="loop"><span class="n">02</span><span class="t">Loop</span></a>
+        <a href="#demo" data-rail="demo"><span class="n">03</span><span class="t">Round</span></a>
+        <a href="#download" data-rail="download"><span class="n">04</span><span class="t">Get</span></a>
+        <a href="#modes" data-rail="modes"><span class="n">05</span><span class="t">Modes</span></a>
+        <a href="#ranks" data-rail="ranks"><span class="n">06</span><span class="t">Ranks</span></a>
+        <a href="#proof" data-rail="proof"><span class="n">07</span><span class="t">Proof</span></a>
+        <a href="#tech" data-rail="tech"><span class="n">08</span><span class="t">Build</span></a>
+      </nav>
+
+      <a class="rail-cta" href="/downloads/math-sikney-1.2.0.apk" download aria-label="Download the Math Sikney APK">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true">
+          <path d="M12 4v11M7 10l5 5 5-5M5 20h14" stroke-linecap="round" stroke-linejoin="round"></path>
+        </svg>
+      </a>
+    </aside>
+
+    <main id="main">
+      <!-- HERO -->
+      <section class="hero" id="intro">
+        <div class="wrap hero-grid">
+          <div class="hero-copy">
+            <p class="kicker">Version 1.2.0 · complete Android release</p>
+            <h1>Math Sikney</h1>
+            <p class="hero-descriptor">the mental math visualizer</p>
+            <p class="hero-riff mono">Visualize. Hold. Solve.</p>
+            <p class="lead">
+              An Android trainer for mental arithmetic that behaves like a memory test. The
+              expression appears for a few seconds, disappears, and you answer from the picture you
+              kept.
+            </p>
+            <div class="actions">
+              <a class="btn btn-primary" href="/downloads/math-sikney-1.2.0.apk" download>
+                Download APK
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true">
+                  <path d="M12 4v11M7 10l5 5 5-5M5 20h14" stroke-linecap="round" stroke-linejoin="round"></path>
+                </svg>
+              </a>
+              <a class="btn btn-ghost" href="#demo">Try the demo</a>
+            </div>
+
+            <dl class="stats">
+              <div class="stat">
+                <dt>Operations</dt>
+                <dd>5</dd>
+              </div>
+              <div class="stat">
+                <dt>Skill levels · × ÷ cap 6</dt>
+                <dd>12</dd>
+              </div>
+              <div class="stat">
+                <dt>Rank tiers</dt>
+                <dd>8</dd>
+              </div>
+              <div class="stat">
+                <dt>Badges</dt>
+                <dd>40</dd>
+              </div>
+            </dl>
+          </div>
+
+          <div class="hero-stage">
+            <span class="stage-tag"><b>L1</b> ADD · 12 of 20</span>
+            <figure class="device">
+              <Picture
+                src={home}
+                formats={["avif", "webp"]}
+                widths={[320, 360]}
+                sizes="(max-width: 900px) 320px, 340px"
+                alt="Math Sikney home screen: a citron daily-practice card showing 12 of 20 questions in a counting frame, a Bronze I rank card, and the daily challenge below."
+                loading="eager"
+                fetchpriority="high"
+              />
+              <figcaption>
+                Home · 360 × 800 dp<br />
+                Captured by the app's UI tests, not a mockup.
+              </figcaption>
+            </figure>
+          </div>
+        </div>
+      </section>
+
+      <!-- LOOP -->
+      <section class="section" id="loop">
+        <div class="wrap">
+          <div class="section-head">
+            <p class="kicker">The loop</p>
+            <h2>Four beats. Then the expression is gone.</h2>
+            <p class="lead">
+              Every mode runs the same sequence. What changes is how long you get, how many
+              expressions you hold at once, and what the app takes away as you climb.
+            </p>
+          </div>
+
+          <div class="loop-grid">
+            <article class="stage-card">
+              <div class="stage-head">
+                <span class="stage-num">01</span>
+                <span class="chip">Show</span>
+              </div>
+              <div>
+                <h3>It appears</h3>
+                <p>
+                  The expression arrives in monospace and stays for a computed time: 900 ms plus 450
+                  ms per digit, never under 1.2 s.
+                </p>
+              </div>
+              <div class="stage-visual">
+                <span class="expr">476 <span class="op">+</span> 83</span>
+              </div>
+            </article>
+
+            <article class="stage-card">
+              <div class="stage-head">
+                <span class="stage-num">02</span>
+                <span class="chip">Hold</span>
+              </div>
+              <div>
+                <h3>It disappears</h3>
+                <p>
+                  On this page a chalk shutter does it in 240 ms. In the app the expression is simply
+                  cleared — or replaced by noise digits for 400–1200 ms at Platinum and above.
+                </p>
+              </div>
+              <div class="stage-visual">
+                <span class="expr is-behind">476 <span class="op">+</span> 83</span>
+                <span class="shutter-still" aria-hidden="true">Hold it…</span>
+              </div>
+            </article>
+
+            <article class="stage-card">
+              <div class="stage-head">
+                <span class="stage-num">03</span>
+                <span class="chip">Answer</span>
+              </div>
+              <div>
+                <h3>You rebuild it</h3>
+                <p>
+                  Digit by digit, in a slot per expression. Called order, reverse and shuffle arrive at
+                  the higher ranks, so reading order stops helping.
+                </p>
+              </div>
+              <div class="stage-visual">
+                <div class="answer-demo">
+                  <div class="slot-line"><span>Answer slot A</span><b>559</b></div>
+                  <div class="mini-keys" aria-hidden="true">
+                    <span>7</span><span>8</span><span>9</span>
+                    <span>4</span><span>5</span><span>6</span>
+                  </div>
+                </div>
+              </div>
+            </article>
+
+            <article class="stage-card">
+              <div class="stage-head">
+                <span class="stage-num">04</span>
+                <span class="chip">Reveal</span>
+              </div>
+              <div>
+                <h3>It tells you why</h3>
+                <p>
+                  Correct answer, your answer, the signed difference, how many digits matched, the
+                  error type, and a coach note for that specific slip.
+                </p>
+              </div>
+              <div class="stage-visual">
+                <div class="reveal-demo">
+                  <div class="row"><span>Correct</span><span class="is-good">559</span></div>
+                  <div class="row"><span>Yours</span><span class="is-bad">565</span></div>
+                  <div class="row"><span>Difference</span><span>+6 too high · 2/3 digits</span></div>
+                  <p class="coach-line">Hold the carry digit in mind before moving to the next column.</p>
+                </div>
+              </div>
+            </article>
+          </div>
+        </div>
+      </section>
+
+      <!-- DEMO -->
+      <section class="section" id="demo">
+        <div class="wrap demo-grid">
+          <div class="demo-copy">
+            <p class="kicker">The round</p>
+            <h2>Five expressions. Then it's your turn.</h2>
+            <p class="lead">
+              This is addition at Level 3 — a three-digit and a two-digit operand. It runs on the
+              app's own timers: 3.15 seconds to hold it, 11 seconds to answer.
+            </p>
+
+            <ul class="demo-notes">
+              <li><b>VIEW</b><span>900 + 450 × 5 digits = 3150 ms. No warm-up, no mask.</span></li>
+              <li><b>INPUT</b><span>Type with the keyboard or the pad. Enter submits, Backspace deletes.</span></li>
+              <li><b>PEEK</b><span>Shows the expression for two more seconds. In the app, peeking costs that question's XP.</span></li>
+              <li><b>HONEST</b><span>The reveal names the mistake from the digits you typed. The categories and coach lines are the app's own strings.</span></li>
+            </ul>
+          </div>
+
+          <div class="demo-panel">
+            <div class="panel" id="round">
+              <div class="panel-head">
+                <span class="live mono" data-round-label>ADD · L3 · STACK 1</span>
+                <span class="mono" data-count>00 / 05</span>
+                <button class="panel-reset" type="button" data-reset>Reset</button>
+              </div>
+
+              <div class="frame-row">
+                <div class="frame" aria-hidden="true">
+                  <div class="frame-rod" data-rod></div>
+                </div>
+                <span class="frame-score mono" data-score>0 of 5 held</span>
+              </div>
+
+              <div class="panel-stage" data-stage>
+                <span class="stage-label mono" data-phase>Ready</span>
+                <div class="expr-line" data-expr><span class="op">—</span></div>
+                <div class="mask-plane" data-mask aria-hidden="true">Hold it…</div>
+              </div>
+
+              <div class="timer" aria-hidden="true"><i data-timer></i></div>
+
+              <p class="panel-hint" data-hint>
+                Press start. The expression stays for 3.15 seconds, then the screen clears.
+              </p>
+
+              <div class="answer-row" data-answer hidden>
+                <label class="visually-hidden" for="demo-answer">Your answer</label>
+                <input
+                  id="demo-answer"
+                  class="answer-input"
+                  data-input
+                  type="text"
+                  inputmode="numeric"
+                  autocomplete="off"
+                  spellcheck="false"
+                  maxlength="7"
+                  placeholder="—"
+                />
+                <button class="peek" type="button" data-peek>
+                  Peek<br /><span class="mono">0 XP</span>
+                </button>
+              </div>
+
+              <div class="keypad" data-keypad hidden>
+                <button class="key" type="button" data-key="1">1</button>
+                <button class="key" type="button" data-key="2">2</button>
+                <button class="key" type="button" data-key="3">3</button>
+                <button class="key" type="button" data-key="4">4</button>
+                <button class="key" type="button" data-key="5">5</button>
+                <button class="key" type="button" data-key="6">6</button>
+                <button class="key" type="button" data-key="7">7</button>
+                <button class="key" type="button" data-key="8">8</button>
+                <button class="key" type="button" data-key="9">9</button>
+                <span class="key is-empty" aria-hidden="true"></span>
+                <button class="key" type="button" data-key="0">0</button>
+                <button class="key" type="button" data-key="back" aria-label="Delete last digit">⌫</button>
+                <button class="key-submit" type="button" data-submit>Submit answer</button>
+              </div>
+
+              <button class="btn btn-primary start-btn" type="button" data-start>
+                Start the round
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true">
+                  <path d="M5 12h14M13 6l6 6-6 6" stroke-linecap="round" stroke-linejoin="round"></path>
+                </svg>
+              </button>
+
+              <div class="reveal" data-reveal hidden>
+                <div class="row"><span class="label">Correct</span><span class="value" data-r-correct></span></div>
+                <div class="row"><span class="label">Yours</span><span class="value" data-r-yours></span></div>
+                <div class="row"><span class="label">Difference</span><span class="value" data-r-diff></span></div>
+                <div class="row">
+                  <span class="label">Digits</span>
+                  <span class="value digit-strip" data-r-digits aria-hidden="true"></span>
+                </div>
+                <div class="row"><span class="label">Error type</span><span class="value" data-r-type></span></div>
+                <p class="coach" data-r-coach></p>
+                <button class="btn btn-primary" type="button" data-next>Next expression</button>
+              </div>
+
+              <div class="summary" data-summary hidden>
+                <p class="big"><span data-s-correct>0</span> / 5</p>
+                <p data-s-line>You held four of five.</p>
+                <div class="actions">
+                  <button class="btn btn-primary" type="button" data-again>Go again</button>
+                  <a class="btn btn-ghost" href="#ranks">See the ladder</a>
+                </div>
+              </div>
+
+              <p class="visually-hidden" role="status" aria-live="polite" data-live></p>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- DOWNLOAD -->
+      <section class="section download-band" id="download">
+        <div class="wrap download-grid">
+          <div class="download-copy">
+            <p class="kicker">Get the app</p>
+            <h2>Download Math Sikney 1.2.0.</h2>
+            <p class="lead">
+              A signed release APK for Android 8.0 and newer. No account, no store intermediary,
+              and no internet permission in the app manifest.
+            </p>
+            <div class="actions">
+              <a class="btn btn-primary" href="/downloads/math-sikney-1.2.0.apk" download>
+                Download APK
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true">
+                  <path d="M12 4v11M7 10l5 5 5-5M5 20h14" stroke-linecap="round" stroke-linejoin="round"></path>
+                </svg>
+              </a>
+              <a class="btn btn-ghost" href="#demo">Try the demo first</a>
+            </div>
+            <p class="download-meta mono">APK · 2.28 MB · version 1.2.0 (3) · minSdk 26</p>
+            <p class="download-sha">
+              SHA-256 <code>{apkSha}</code>
+            </p>
+          </div>
+
+          <aside class="download-card" aria-label="APK package details">
+            <div class="download-pack">
+              <Mark />
+              <div>
+                <p class="pack-name">Math Sikney</p>
+                <p class="pack-id mono">app.mathsikney.mmv</p>
+              </div>
+            </div>
+            <dl>
+              <div><dt>Version</dt><dd>1.2.0 · code 3</dd></div>
+              <div><dt>Platform</dt><dd>Android 8.0+</dd></div>
+              <div><dt>Size</dt><dd>2.28 MB</dd></div>
+              <div><dt>Signature</dt><dd>APK Signature Scheme v2 + v3</dd></div>
+            </dl>
+            <p class="download-note">
+              Android may ask you to allow installs from your browser. This is a direct APK, not a
+              Play Store listing.
+            </p>
+            <p class="download-contact">
+              Built by <a href="https://github.com/approxy-dev">approxy-dev</a><br />
+              Feedback and contact: <a href="mailto:approxydev@gmail.com">approxydev@gmail.com</a>
+            </p>
+          </aside>
+        </div>
+      </section>
+
+      <!-- MODES -->
+      <section class="section" id="modes">
+        <div class="wrap">
+          <div class="section-head">
+            <p class="kicker">Modes</p>
+            <h2>Seven ways in. All shipped.</h2>
+            <p class="lead">
+              Addition, subtraction, multiplication, division and mixed play each carry their own
+              level, rank, stats and badges. Nothing here is shared between them.
+            </p>
+          </div>
+
+          <div class="modes">
+            {
+              modes.map((mode) => (
+                <div class="mode-row">
+                  <h3 class="mode-name">
+                    {mode.name}
+                    <span class={`chip chip-${mode.state}`}>{mode.chip}</span>
+                  </h3>
+                  <p class="mode-desc">{mode.desc}</p>
+                  <p class="mode-meta">{mode.meta}</p>
+                </div>
+              ))
+            }
+          </div>
+        </div>
+      </section>
+
+      <!-- RANKS -->
+      <section class="ranks-band" id="ranks">
+        <div class="wrap section">
+          <div class="section-head">
+            <p class="kicker">Progression</p>
+            <h2>Eight tiers. Ten stars. One open end.</h2>
+            <p class="lead">
+              Accuracy is 60% of a ranked score, speed 25%, matched digits 15%. Higher tiers take away
+              time, add masks and hearts, and start calling slots out of order.
+            </p>
+          </div>
+
+          <div class="ladder" aria-label="Rank ladder with RP thresholds">
+            {
+              ladder.map((step) => (
+                <div class="rung">
+                  <RankEmblem tier={step.tier} color={step.color} top={step.top} id={step.tier} />
+                  <span class="tier">{step.tier}</span>
+                  <span class="rp">{step.rp} RP</span>
+                </div>
+              ))
+            }
+          </div>
+
+          <p class="ladder-note">
+            Bronze to Heroic each hold three divisions. Master adds ten stars. Grandmaster has no
+            ceiling: its level is <b>min(12, 10 + floor((RP − 4090) / 300))</b>. Every operation ranks
+            separately, so your addition rank can sit at Gold while division is still Bronze.
+          </p>
+
+          <div class="badges">
+            <div class="badges-head">
+              <h3>Forty badges, six per operation plus ten general</h3>
+              <p>12 shown · names and requirements from the catalog</p>
+            </div>
+            <div class="badge-grid">
+              {
+                badges.map((badge) => (
+                  <div class="badge">
+                    <div class="name">
+                      <span>{badge.name}</span>
+                      <span class="cat">{badge.cat}</span>
+                    </div>
+                    <p class="req">{badge.req}</p>
+                  </div>
+                ))
+              }
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- PROOF -->
+      <section class="proof section" id="proof">
+        <div class="wrap">
+          <div class="section-head">
+            <p class="kicker">Evidence</p>
+            <h2>Not mockups.</h2>
+            <p class="lead">
+              Every screen here was rendered by the app's own UI test suite. Phones are 360 × 800 dp
+              and the landscape frame is 800 × 400 dp. The pixel width is real, which is why they are
+              shown at native size instead of stretched across a hero.
+            </p>
+          </div>
+
+          <p class="shots-hint">11 captures · swipe or scroll</p>
+          <div class="shots-wrap">
+            <div class="shots" role="group" aria-label="App screenshots" tabindex="0">
+              {
+                shots.map((shot) => (
+                  <figure class={`shot${shot.wide ? " shot-wide" : ""}`}>
+                    <Picture
+                      src={shot.img}
+                      formats={["avif", "webp"]}
+                      widths={shot.wide ? [380, 760] : [264, 300]}
+                      sizes={shot.wide ? "(max-width: 560px) 320px, 380px" : "(max-width: 560px) 240px, 264px"}
+                      alt={shot.alt}
+                      loading="lazy"
+                      decoding="async"
+                    />
+                    <figcaption>
+                      <b>{shot.title}</b>
+                      {shot.note} <span class="px">{shot.px}</span>
+                    </figcaption>
+                  </figure>
+                ))
+              }
+            </div>
+          </div>
+
+          <div class="proof-note">
+            <p>
+              A selection from the 1.2.0 UI-test report. No device frames were drawn around the
+              captures, and nothing was composited, upscaled or re-typeset.
+            </p>
+            <p class="stamp">
+              app/build/reports/design<br />
+              UI test captures · 24 Nov 2026
+            </p>
+          </div>
+        </div>
+      </section>
+
+      <!-- PRIVACY -->
+      <section class="section" id="privacy">
+        <div class="wrap privacy-grid">
+          <div class="privacy-copy">
+            <p class="kicker">Privacy</p>
+            <h2>No internet permission.</h2>
+            <p class="lead">
+              The release manifest doesn't merely avoid the network — it explicitly removes the
+              INTERNET permission. There is no account, no ad SDK, no analytics and no cloud sync. One
+              profile, stored in Room on the phone.
+            </p>
+            <p class="muted" style="margin-top:14px;font-size:.875rem">
+              That is unusual enough to be worth checking. The app is fully usable in airplane mode,
+              permanently.
+            </p>
+          </div>
+
+          <dl class="facts">
+            <div class="fact">
+              <dt>01</dt>
+              <dd><b>No network at all</b><span>INTERNET is removed in the manifest. Nothing to opt out of.</span></dd>
+            </div>
+            <div class="fact">
+              <dt>02</dt>
+              <dd><b>One local profile</b><span>Name, symbol and daily goal. No login, no email, no device identifier.</span></dd>
+            </div>
+            <div class="fact">
+              <dt>03</dt>
+              <dd><b>Your data, your file</b><span>Compressed JSON backup and restore, plus a CSV of every attempt.</span></dd>
+            </div>
+            <div class="fact">
+              <dt>04</dt>
+              <dd><b>This page</b><span>Cookieless Vercel Analytics. No cookies, no cross-site tracking, no fingerprinting.</span></dd>
+            </div>
+          </dl>
+
+          <div class="language-note">
+            <p class="dev" lang="ne">मानसिक गणित अभ्यास</p>
+            <p>
+              English and Nepali, with Latin or Devanagari numerals and South Asian digit grouping.
+              Large-text labels are supported throughout the app.
+            </p>
+          </div>
+        </div>
+      </section>
+
+      <!-- ROADMAP -->
+      <section class="section" id="roadmap">
+        <div class="wrap">
+          <div class="section-head">
+            <p class="kicker">Release</p>
+            <h2>What shipped, what is verified, what is next.</h2>
+            <p class="lead">
+              Version 1.2.0 is complete. The lists below separate what is in the build, how it was
+              verified, and what remains outside this release.
+            </p>
+          </div>
+
+          <div class="roadmap">
+            <div class="road-col is-live">
+              <h3>Shipped · 1.2.0</h3>
+              <span class="when">Version code 3 · complete</span>
+              <ul>
+                <li>Stack Challenge with five or ten rounds and four mistake policies</li>
+                <li>Learn &amp; Explore: counting, bonds, addition within 10 and 20</li>
+                <li>Practice with one to five questions and transparent round scores</li>
+                <li>Any order, free Pass, Hide when ready and a mastery grid</li>
+                <li>Five experience presets and a three-task first run</li>
+                <li>Schema-3 backups with additive migrations</li>
+              </ul>
+            </div>
+
+            <div class="road-col is-progress">
+              <h3>Verified · 1.2.0</h3>
+              <span class="when">Local build record</span>
+              <ul>
+                <li>85 tests across 14 suites</li>
+                <li>Debug and optimized release builds complete</li>
+                <li>Lint: zero errors, 50 warnings, one hint</li>
+                <li>Phone, landscape, tablet and large-text captures</li>
+                <li>No connected Android target was available for device execution</li>
+              </ul>
+            </div>
+
+            <div class="road-col is-plan">
+              <h3>Backlog · not in 1.2.0</h3>
+              <span class="when">Specified, not shipped</span>
+              <ul>
+                <li>Full adaptive engine and spaced-review scheduler</li>
+                <li>Placement, carry/borrow tiers and an advanced learning graph</li>
+                <li>Number Garden, Bridge Builder and Market Math</li>
+                <li>Multiple profiles, classroom and multiplayer</li>
+                <li>Spoken recall, sticker rewards and quests</li>
+                <li>Play Store distribution</li>
+              </ul>
+            </div>
+          </div>
+
+          <p class="road-note">
+            1.2.0 is the current complete build. The backlog lists work that is not in this APK, and
+            no date is promised for it.
+          </p>
+        </div>
+      </section>
+
+      <!-- TECH -->
+      <section class="section" id="tech">
+        <div class="wrap tech-grid">
+          <div class="tech-copy">
+            <p class="kicker">Under the hood</p>
+            <h2>Built solo, offline, in Kotlin.</h2>
+            <p>
+              One Android module, package by feature, no backend. The release build runs R8 with
+              resource shrinking and declares no network permission at all.
+            </p>
+            <p>
+              JUnit and Robolectric suites cover question generation, scoring, levels, streaks, pause
+              and Peek timing, interrupted-match recovery, migrations, legacy and compressed backups,
+              hostile import input, and navigation through all five dashboards.
+            </p>
+            <p>
+              This page is Astro with vanilla CSS and JavaScript. No framework runtime, no client-side
+              router, no analytics beyond a cookieless page view.
+            </p>
+          </div>
+
+          <dl class="tech-table">
+            <div class="tech-row">
+              <dt>PLATFORM</dt>
+              <dd>Android 8.0+<span>minSdk 26 · target 36 · portrait, edge-to-edge</span></dd>
+            </div>
+            <div class="tech-row">
+              <dt>BUILD</dt>
+              <dd>Kotlin + Jetpack Compose<span>Material 3 · Navigation Compose · R8 in release</span></dd>
+            </div>
+            <div class="tech-row">
+              <dt>STORAGE</dt>
+              <dd>Room + DataStore<span>Single profile, local only, JSON and CSV export</span></dd>
+            </div>
+            <div class="tech-row">
+              <dt>TESTS</dt>
+              <dd>JUnit · Robolectric · Compose UI<span>85 tests across 14 suites</span></dd>
+            </div>
+            <div class="tech-row">
+              <dt>TYPE</dt>
+              <dd>Space Grotesk · Plus Jakarta Sans · JetBrains Mono<span>Bundled in the app, self-hosted here</span></dd>
+            </div>
+            <div class="tech-row">
+              <dt>RELEASE</dt>
+              <dd>1.2.0 · version code 3<span>Signed APK for direct download · no store listing</span></dd>
+            </div>
+          </dl>
+        </div>
+      </section>
+
+      <!-- FOOTER -->
+      <footer class="site-footer">
+        <div class="wrap">
+          <div class="footer-grid">
+            <div class="footer-mark">
+              <Mark />
+              <p class="name">Math Sikney</p>
+              <p>A mental arithmetic trainer for Android. Version 1.2.0.</p>
+            </div>
+
+            <div class="build-log">
+              <h2>BUILD LOG</h2>
+              <ul style="list-style:none;margin:0;padding:0">
+                <li><time datetime="2026-11-18">18 Nov 2026</time><span>1.1.0 reliability release</span></li>
+                <li><time datetime="2026-11-19">19 Nov 2026</time><span>Technical handbook, 128-item register</span></li>
+                <li><time datetime="2026-11-24">24 Nov 2026</time><span>1.2.0 complete · signed APK and this site</span></li>
+              </ul>
+            </div>
+
+            <div class="footer-meta">
+              <p>English · <span class="dev" lang="ne">नेपाली</span></p>
+              <p style="margin-top:6px">Cookieless analytics by Vercel.</p>
+              <p style="margin-top:10px"><a href="/downloads/math-sikney-1.2.0.apk" download>Download APK</a></p>
+              <p style="margin-top:6px"><a href="https://github.com/approxy-dev">GitHub</a> · <a href="mailto:approxydev@gmail.com">Email</a></p>
+            </div>
+          </div>
+
+          <div class="footer-bottom">
+            <span>© 2026 Math Sikney</span>
+            <span>Direct APK. No account. No store required.</span>
+          </div>
+        </div>
+      </footer>
+    </main>
+  </div>
+
+  <script>
+    import "../scripts/demo.js";
+  </script>
+
+  <script>
+    const links = Array.from(document.querySelectorAll("[data-rail]"));
+    const ids = links.map((link) => link.dataset.rail ?? "").filter(Boolean);
+    const targets = ids
+      .map((id) => document.getElementById(id))
+      .filter((el) => el !== null);
+
+    const setActive = (id) => {
+      for (const link of links) {
+        link.classList.toggle("is-active", link.dataset.rail === id);
+      }
+    };
+
+    if ("IntersectionObserver" in window && targets.length > 0) {
+      const visible = new Map();
+      const observer = new IntersectionObserver(
+        (entries) => {
+          for (const entry of entries) {
+            visible.set(entry.target.id, entry.isIntersecting ? entry.intersectionRatio : 0);
+          }
+          let best = "";
+          let bestRatio = 0;
+          for (const [id, ratio] of visible) {
+            if (ratio > bestRatio) {
+              best = id;
+              bestRatio = ratio;
+            }
+          }
+          if (best) setActive(best);
+        },
+        { rootMargin: "-20% 0px -55% 0px", threshold: [0, 0.2, 0.5, 1] },
+      );
+
+      for (const target of targets) observer.observe(target);
+    }
+
+    // Chrome does not fetch lazy images that sit outside the visible slice of a
+    // horizontal scroller, so upgrade the proof strip once it nears the viewport.
+    const strip = document.querySelector(".shots");
+    if (strip) {
+      const loadStrip = () => {
+        for (const img of strip.querySelectorAll("img")) {
+          if (!img.complete) img.loading = "eager";
+        }
+        strip.removeEventListener("scroll", loadStrip);
+      };
+
+      if ("IntersectionObserver" in window) {
+        const stripObserver = new IntersectionObserver(
+          (entries) => {
+            if (entries.some((entry) => entry.isIntersecting)) {
+              loadStrip();
+              stripObserver.disconnect();
+            }
+          },
+          { rootMargin: "600px 0px" },
+        );
+        stripObserver.observe(strip);
+      }
+
+      strip.addEventListener("scroll", loadStrip, { passive: true, once: true });
+
+      const wrap = strip.closest(".shots-wrap");
+      if (wrap) {
+        const syncFade = () => {
+          const max = strip.scrollWidth - strip.clientWidth;
+          wrap.classList.toggle("is-static", max <= 2);
+          wrap.classList.toggle("is-end", strip.scrollLeft >= max - 2);
+        };
+        syncFade();
+        strip.addEventListener("scroll", syncFade, { passive: true });
+        window.addEventListener("resize", syncFade);
+      }
+    }
+  </script>
+</Base>
